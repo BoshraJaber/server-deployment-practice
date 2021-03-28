@@ -22,4 +22,13 @@ describe('Server', () => {
     expect(response.status).toEqual(200);
     expect(response.text).toEqual('Hello World!');
   });
+  it('handle status routes', async () => {
+    const response = await request.get('/status');
+    expect(response.status).toEqual(200);
+    expect(response.text).toEqual({
+      'domain': 'https://boshra-server-deploy-prod.herokuapp.com/',
+      'status': 'running',
+      'port': 3000,
+    });
+  });
 });
