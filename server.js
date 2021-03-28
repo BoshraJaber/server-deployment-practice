@@ -12,6 +12,13 @@ app.get('/', (req, res) => {
 app.get('/error', (req, res) => {
   throw new Error('Something went wrong!');
 });
+app.get('/status', (req,res)=>{
+  res.send({
+    'domain': 'https://boshra-server-deploy-prod.herokuapp.com/',
+    'status': 'running',
+    'port': 3000,
+  });
+});
 // these must be after all of the routes
 app.use('*', notFountHandler);
 app.use(errorHandler);
